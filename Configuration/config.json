@@ -1,0 +1,18 @@
+{
+    "0":{
+        "iP":"192.168.140.143",
+        "communaute":"univ-1",
+        "lieux":"Bourget",
+        "descrOID":"SNMP_PROF",
+        "oID":"1.3.6.1.2.1.2.2.1.16",
+        "nom":"PROF"
+        },
+    "1":{
+        "iP":"127.0.0.1",
+        "communaute":"mdp",
+        "lieux":"bourget",
+        "descrOID":"pc",
+        "oID":"1.3.6.1.2.1.1.3",
+        "nom":"pc"
+        }
+}
