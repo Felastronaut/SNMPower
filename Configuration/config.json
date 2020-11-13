@@ -1,18 +1,32 @@
 {
     "0":{
-        "IP":"192.168.140.143",
+        "ip":"192.168.140.143",
         "communaute":"univ-1",
         "location":"Bourget",
         "descrOID":"SNMP_PROF",
-        "OID":"1.3.6.1.2.1.2.2.1.16",
-        "NAME":"PROF"
+        "oid":"1.3.6.1.2.1.2.2.1.16",
+        "name":"PROF",
+        "version": "2c"
         },
     "1":{
-        "IP":"127.0.0.1",
+        "ip":"127.0.0.1",
         "communaute":"mdp",
         "location":"bourget",
         "descrOID":"pc",
-        "OID":"1.3.6.1.2.1.1.3",
-        "NAME":"pc"
+        "oid":"1.3.6.1.2.1.1.3",
+        "name":"pc",
+        "version": "2c"
+        },
+    "2":{
+        "ip":"is24sw02.local.univ-savoie.fr",
+        "communaute":"univ-1",
+        "location":"Bourget",
+        "descrOID":"SNMP_v3",
+        "oid":"1.3.6.1.2.1.2.2.1.16",
+        "name":"SNMPv3",
+        "version": "3",
+        "user": "m2tri",
+        "password": "tpjava2017auth",
+        "crypt": "tpjava2017crypt"
         }
 }
