@@ -4,7 +4,7 @@
         "communaute":"univ-1",
         "location":"Bourget",
         "descrOID":"SNMP_PROF",
-        "oid":"1.3.6.1.2.1.2.2.1.16",
+        "oid":["1.3.6.1.2.1.2.2.1.16"],
         "name":"PROF",
         "version": "2c"
         },
@@ -13,8 +13,8 @@
         "communaute":"mdp",
         "location":"bourget",
         "descrOID":"pc",
-        "oid":"1.3.6.1.2.1.1.3",
-        "name":"pc",
+        "oid":[""],
+        "name":"pc-local",
         "version": "2c"
         },
     "2":{
@@ -22,11 +22,20 @@
         "communaute":"univ-1",
         "location":"Bourget",
         "descrOID":"SNMP_v3",
-        "oid":"1.3.6.1.2.1.2.2.1.16",
+        "oid":["1.3.6.1.2.1.2.2.1.16"],
         "name":"SNMPv3",
         "version": "3",
         "user": "m2tri",
         "password": "tpjava2017auth",
         "crypt": "tpjava2017crypt"
+        },
+    "3":{
+        "ip":"192.168.176.2",
+        "communaute":"passprojet",
+        "location":"Bourget",
+        "descrOID":"SNMP_v2-2",
+        "oid":["1.3.6.1.2.1.2.2.1.16"],
+        "name":"SNMPv2-2",
+        "version": "2c"
         }
 }
