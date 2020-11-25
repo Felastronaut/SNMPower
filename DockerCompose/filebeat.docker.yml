@@ -1,0 +1,18 @@
+filebeat.inputs:
+- type: log
+  paths:
+  #location of logged logs
+    - /var/logs/*.log
+  fields:
+  #champ pour savoir de quelle machine vient les modifications
+    host: 1
+ 
+#========================== Create indexes ===============================
+processors:
+  - add_fields:
+      fields:
+        name: index
+
+#========================== Elasticsearch output ===============================
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]

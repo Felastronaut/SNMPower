@@ -1,0 +1,51 @@
+version: "3.6"
+
+# use docker volume to persist ElasticSearch data outside of a container.
+volumes:
+  filebeat:
+  logs:
+services:
+ #grafana container
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+ 
+ #elasticsearch container
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - http.port=9200
+      - http.cors.enabled=true
+      - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+      - http.cors.allow-credentials=true
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+
+
+  #filebeat container
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.9.1
+    user: root #To read the docker socket
+    container_name: filebeat
+    volumes:
+      #Configuration of filebeat
+      - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
+      #Logs who need to be readed
+      - "./Logs:/var/logs:ro"
+    command: ["-strict.perms=false"]
+    restart: on-failure
+
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.1
+    container_name: kibana
+    #volumes:
+    #  - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    ports: ['5601:5601']

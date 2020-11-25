@@ -1,0 +1,86 @@
+{
+    "monitoring": {
+      "metrics": {
+        "beat": {
+          "cpu": {
+            "system": {
+              "ticks": 660,
+              "time": {
+                "ms": 16
+              }
+            },
+            "total": {
+              "ticks": 1720,
+              "time": {
+                "ms": 19
+              },
+              "value": 1720
+            },
+            "user": {
+              "ticks": 1060,
+              "time": {
+                "ms": 3
+              }
+            }
+          },
+          "handles": {
+            "limit": {
+              "hard": 1048576,
+              "soft": 1048576
+            },
+            "open": 12
+          },
+          "info": {
+            "ephemeral_id": "071ae377-f437-4f87-9da6-5e03f44c77ee",
+            "uptime": {
+              "ms": 750078
+            }
+          },
+          "memstats": {
+            "gc_next": 15931296,
+            "memory_alloc": 8084216,
+            "memory_total": 209154096
+          },
+          "runtime": {
+            "goroutines": 29
+          }
+        },
+        "filebeat": {
+          "harvester": {
+            "open_files": 2,
+            "running": 2
+          }
+        },
+        "libbeat": {
+          "config": {
+            "module": {
+              "running": 0
+            }
+          },
+          "pipeline": {
+            "clients": 1,
+            "events": {
+              "active": 0
+            }
+          }
+        },
+        "registrar": {
+          "states": {
+            "current": 2
+          }
+        },
+        "system": {
+          "load": {
+            "1": 0.57,
+            "15": 0.6,
+            "5": 0.65,
+            "norm": {
+              "1": 0.1425,
+              "15": 0.15,
+              "5": 0.1625
+            }
+          }
+        }
+      }
+    }
+  }
