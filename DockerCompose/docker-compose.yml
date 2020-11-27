@@ -28,7 +28,6 @@ services:
       - '9200:9200'
       - '9300:9300'
 
-
   #filebeat container
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.9.1
@@ -49,3 +48,28 @@ services:
     #volumes:
     #  - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     ports: ['5601:5601']
+
+  
+  metricbeat:
+      container_name: metricbeat
+      hostname: metricbeat
+      user: root #To read the docker socket
+      image: docker.elastic.co/beats/metricbeat:7.9.1
+      logging:
+        options:
+          max-file: "3"
+          max-size: "50m"
+      volumes:
+        #Mount the metricbeat configuration so users can make edits.
+        - ./metricbeat.docker.yml:/usr/share/metricbeat/metricbeat.yml
+        #Mount the modules.d directory into the container. This allows user to potentially make changes to the modules and they will be dynamically loaded.
+        - ./modules.d/:/usr/share/metricbeat/modules.d/
+        #The commented sections below enable Metricbeat to monitor the Docker host rather than the Metricbeat container. These are used by the system module.
+        - /proc:/hostfs/proc:ro
+        - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+        #Allows us to report on docker from the hosts information.
+        - /var/run/docker.sock:/var/run/docker.sock
+        #We mount the host filesystem so we can report on disk usage with the system module.
+        - /:/hostfs:ro
+      command: metricbeat -e -system.hostfs=/hostfs -strict.perms=false
+      restart: on-failure
