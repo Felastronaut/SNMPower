@@ -35,7 +35,7 @@ services:
     container_name: filebeat
     volumes:
       #Configuration of filebeat
-      - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
+      - "./config/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
       #Logs who need to be readed
       - "./Logs:/var/logs:ro"
     command: ["-strict.perms=false"]
@@ -61,9 +61,9 @@ services:
           max-size: "50m"
       volumes:
         #Mount the metricbeat configuration so users can make edits.
-        - ./metricbeat.docker.yml:/usr/share/metricbeat/metricbeat.yml
+        - ./config/metricbeat.docker.yml:/usr/share/metricbeat/metricbeat.yml
         #Mount the modules.d directory into the container. This allows user to potentially make changes to the modules and they will be dynamically loaded.
-        - ./modules.d/:/usr/share/metricbeat/modules.d/
+        - ./config/modules.d/:/usr/share/metricbeat/modules.d/
         #The commented sections below enable Metricbeat to monitor the Docker host rather than the Metricbeat container. These are used by the system module.
         - /proc:/hostfs/proc:ro
         - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
